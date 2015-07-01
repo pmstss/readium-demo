@@ -132,6 +132,7 @@ module.exports = function (grunt) {
         '<%= config.app %>/scripts/{,*/}*.js',
         '!<%= config.app %>/scripts/epub/*.js',
         '!<%= config.app %>/scripts/vendor/*',
+        '!<%= config.app %>/scripts/readium/*',
         'test/spec/{,*/}*.js'
       ]
     },
@@ -166,7 +167,7 @@ module.exports = function (grunt) {
       app: {
         ignorePath: /^\/|\.\.\//,
         src: ['<%= config.app %>/index.html'],
-        exclude: ['bower_components/bootstrap/dist/js/bootstrap.js']
+        exclude: ['jquery', 'handlebars', 'backbone', 'underscore']  /* i.e. requirejs only*/
       }
     },
 
@@ -336,6 +337,15 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
+    },
+
+    bowerRequirejs: {
+      all: {
+        rjsConfig: '<%= config.app %>/rjs-config.js',
+        options: {
+          'exclude-dev': true
+        }
+      }
     }
   });
 
@@ -393,9 +403,15 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
+    grunt.registerTask('generateRjsConfig', [
+    'bowerRequirejs'
+  ]);
+
   grunt.registerTask('default', [
     'newer:jshint',
-    'test',
+    /*'test',*/
+    'generateRjsConfig',
     'build'
   ]);
+
 };
