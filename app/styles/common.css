@@ -1,0 +1,1231 @@
+@font-face {
+    font-family: 'OpenSans-Light';
+    font-style: normal;
+    font-weight: 300;
+    src: url(../fonts/OpenSans-Light.woff) format('woff');
+}
+@font-face {
+    font-family: 'OpenSans-Regular';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../fonts/OpenSans-Regular.woff) format('woff');
+}
+@font-face {
+    font-family: 'OpenSans-Bold';
+    font-style: normal;
+    font-weight: 700;
+    src: url(../fonts/OpenSans-Bold.woff) format('woff');
+}
+@font-face {
+    font-family: 'OpenSans-Italic';
+    font-style: italic;
+    font-weight: 400;
+    src: url(../fonts/OpenSans-Italic.woff) format('woff');
+}
+
+html, body {
+    height: 100%;
+}
+
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, img, ins, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, audio, video {
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+ul {
+    list-style: none;
+}
+
+p, label, span, h1, h2, h3, h4, h4 {
+    text-overflow: ellipsis;
+}
+
+textarea {
+    resize: none;
+}
+
+table, table td {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #956837
+}
+
+img {
+    border: none;
+}
+
+*:not(input):not(textarea) {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+svg, symbol {
+    overflow: visible;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url(../images/bg.jpg);
+    font-family: OpenSans-Light, Helvetica, sans-serif;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+/*** Footer ***/
+
+#footer {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 38px;
+    bottom: -38px;
+    transition: bottom 0.3s;
+}
+
+#footer .pagesSliderContainer {
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    background-color: black;
+    z-index: 1;
+}
+
+/*** Desktop ***/
+
+.desktop {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: url(../images/desk_bg.png);
+    transition: bottom 0.3s;
+    z-index: 0;
+}
+
+.doc #docView.tb ~ #footer .desktop {
+    bottom: 37px;
+}
+
+.desktop.in {
+    height: 1px;
+}
+
+.desktop.out {
+    height: 220px;
+    bottom: 0;
+    transition: height 0.3s ease 0s, bottom 0.3s ease 0s;
+}
+
+.doc #docView.tb ~ #footer .desktop.out {
+    bottom: 38px;
+}
+
+.desktop .caption {
+    position: absolute;
+    height: 32px;
+    top: -32px;
+    width: 200px;
+    background: top center url(../images/deskf_labe_bg.png) no-repeat;
+    text-align: center;
+    cursor: pointer;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.desktop .caption p {
+    float: left;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    margin: 8px 0 0 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.desktop .caption label {
+    color: #fff;
+    padding: 12px;
+    font-size: 14px;
+    margin: -3px 0 0 5px;
+    height: 26px;
+    width: 26px;
+    text-align: center;
+    background: center center url(../images/icons/w_circle.png) no-repeat;
+    font-style: normal;
+    cursor: pointer;
+}
+
+.desktop.in .cnt {
+    display: none;
+}
+
+.desktop .navi {
+    position: absolute;
+    height: 90px;
+    width: 32px;
+    top: 68px;
+    background-image: url(../images/icons/desk_navi_bg.png);
+    cursor: pointer;
+    z-index: 25
+}
+
+.desktop .navi.prev, .desktop .navi.prev:hover {
+    left: 0;
+    background-position: 32px 0;
+}
+
+.desktop .navi.prev:active {
+    left: 0;
+    background-position: 32px 90px;
+}
+
+.desktop .navi.next, .desktop .navi.next:hover {
+    right: 0;
+    background-position: 0 0;
+}
+
+.desktop .navi.next:active {
+    right: 0;
+    background-position: 0 90px;
+}
+
+.desktop .navi .arrow {
+    margin-top: 39px;
+    margin-left: 10px;
+    width: 7px;
+    height: 12px;
+    background-image: url(../images/icons/arrows_desk.png);
+}
+
+.desktop .navi.next .arrow, .desktop .navi.next:active .arrow {
+    float: right;
+    margin-right: 11px;
+    background-position: 7px 0;
+}
+
+.desktop .navi.next:active .arrow {
+    background-position: 7px 0 !important;
+}
+
+.desktop .navi.next:hover .arrow {
+    float: right;
+    margin-right: 11px;
+    background-position: 7px 12px
+}
+
+.desktop .navi.prev .arrow, .desktop .navi.prev:active .arrow {
+    float: left;
+    margin-left: 11px;
+    background-position: 0 0;
+}
+
+.desktop .navi.prev:active .arrow {
+    background-position: 0 0 !important;
+}
+
+.desktop .navi.prev:hover .arrow {
+    float: left;
+    margin-left: 11px;
+    background-position: 0 12px
+}
+
+.desktop .booklist {
+    position: absolute;
+    left: 60px;
+    top: 35px;
+    z-index: 24;
+    right: 60px;
+    overflow: hidden;
+}
+
+.desktop .booklist ul {
+    position: relative;
+    top: 10px;
+    white-space: nowrap;
+    display: inline-block;
+    left: 4px;
+    transition: left 0.5s;
+}
+
+.desktop .booklist li {
+    position: relative;
+    margin: 0 25px 0 0;
+    height: 134px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.desktop .booklist li .cover {
+    position: static;
+    height: 134px;
+    min-width: 80px;
+    max-width: 100px;
+    z-index: 1;
+}
+
+.desktop .booklist li .label {
+    position: absolute;
+    z-index: 5;
+    left: -4px;
+    bottom: 20px;
+    width: calc(100% + 8px);
+    height: 55px;
+}
+
+.desktop .booklist li .label .leftsh {
+    float: left;
+    height: 55px;
+    width: 4px;
+    background: left bottom url(../images/cover_label_bg.png) no-repeat
+}
+
+.desktop .booklist li .label .rightsh {
+    float: right;
+    height: 55px;
+    width: 4px;
+    background: right bottom url(../images/cover_label_bg.png) no-repeat
+}
+
+.desktop .booklist li .label .cont {
+    position: relative;
+    float: left;
+    height: 53px;
+    width: calc(100% - 8px);
+    margin: 2px 0 0 0;
+    background: -ms-linear-gradient(left, #04b5ff 0%, #0c87d6 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #04b5ff), color-stop(100%, #0c87d6));
+    background: -moz-linear-gradient(left, #04b5ff 0%, #0c87d6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#04b5ff', endColorstr='#0c87d6');
+    opacity: 0.95;
+}
+
+.desktop .booklist li .label span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+    line-height: 1.2em;
+    overflow: hidden;
+    vertical-align: top;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.desktop .booklist li .close {
+    position: absolute;
+    right: -7px;
+    top: -7px;
+    z-index: 7;
+    width: 19px;
+    height: 19px;
+    background-image: url(../images/icons/close_desk.png);
+    display: none;
+}
+
+.desktop .booklist li:hover .close {
+    display: block;
+}
+
+.desktop .booklist li .close:hover {
+    display: block;
+    background-position: 19px 0;
+}
+
+.desktop .btn_clear {
+    position: absolute;
+    top: 10px;
+    width: 99px;
+    height: 26px;
+    background: url(../images/icons/clear.png);
+    cursor: pointer;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.desktop .btn_clear:hover, .desktop .btn_clear:active {
+    background-position: 0 26px;
+}
+
+.desktop .btn_clear span {
+    float: left;
+    margin: 6px 0 0 33px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1em;
+}
+
+.desktop .navi.next:active .arrow {
+    float: right;
+    margin-right: 11px;
+    background-position: 7px 0;
+}
+
+.desktop .navi.prev:active .arrow {
+    float: left;
+    margin-left: 11px;
+    background-position: 0 0;
+}
+
+/*** Header ***/
+
+.header {
+    position: fixed;
+    width: 100%;
+    background: #000;
+    float: left;
+    top: -38px;
+    box-shadow: 0 -1px 5px 1px #acacac;
+    min-width: 600px;
+    z-index: 100;
+    height: 0;
+    display: none;
+}
+
+.header table {
+    width: 100%;
+}
+
+.header table td {
+    vertical-align: top;
+}
+
+.header h1 {
+    margin: 2px 0 0 0;
+    line-height: 1.2em;
+    width: 100%;
+    text-align: center;
+    font-size: 19pt;
+    color: #fff;
+    overflow: hidden;
+    height: 1.3em;
+    cursor: default;
+}
+
+.header h1 span {
+    font-size: 12pt
+}
+
+#docView.tb .header {
+    top: 0;
+    left: 0;
+    height: auto;
+    display: block
+}
+
+.header .ltb, .loginHeader .ltb {
+    width: 140px;
+}
+
+.doc .header .rtb {
+    min-width: 165px;
+}
+
+.header .ltb > ul {
+    margin: 6px 0 0 20px;
+    float: left;
+    white-space: nowrap;
+    width: 120px;
+    height: 32px;
+}
+
+.header .rtb > ul {
+    margin: 6px 20px 0 0;
+    float: right;
+    white-space: nowrap;
+    width: auto;
+    height: 32px;
+}
+
+.header .ltb > ul > li, .header .rtb > ul > li {
+    float: left;
+    margin: 0 10px 0 0;
+    white-space: nowrap;
+    width: 26px;
+    height: 26px;
+    position: relative;
+}
+
+.header .ltb li > div > a, .header .rtb li > div > a {
+    float: left;
+    white-space: nowrap;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    background-position: center;
+}
+
+.header .ltb li div.circle, .header .rtb li div.circle {
+    float: left;;
+    background: center center url(../images/icons/w_circle.png) no-repeat;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 7
+}
+
+.header .ltb li div.fe, .header .rtb li div.fe {
+    display: none;
+}
+
+.header .ltb li.active div.fe, .header .rtb li.active div.fe {
+    background: top center url(../images/icons/popover_ver_btn.png) no-repeat;
+    position: absolute;
+    width: 62px;
+    height: 45px;
+    left: -18px;
+    top: -4px;
+    z-index: 6;
+    display: block;
+}
+
+.header .ltb li.active div.fe > div, .header .rtb li.active div.fe > div {
+    position: absolute;
+    z-index: 6;
+    top: 44px;
+    background: #fff;
+    border-radius: 10px;
+    opacity: 0.95;
+    box-shadow: 0 3px 3px 0 #A4A4A4;
+}
+
+.header li.active div.fe > div .close, div.fe > div .close {
+    position: absolute;
+    z-index: 7;
+    top: -4px;
+    right: -4px;
+    width: 19px;
+    height: 19px;
+    background: url(../images/icons/popover_close.png);
+    cursor: pointer;
+    box-shadow: 1px -1px 2px 0 #A4A4A4;
+    border-radius: 9px;
+}
+
+.header li.active div.fe > div .close:hover, div.fe > div .close:hover {
+    background-position: 19px 0;
+}
+
+.header .ltb li:hover div.circle, .header .rtb li:hover div.circle {
+    background: center center url(../images/icons/wh_circle.png) no-repeat;
+}
+
+.header .ltb li.active div.circle, .header .rtb li.active div.circle {
+    background: center center url(../images/icons/blue_disc.png) no-repeat;
+}
+
+.header .icon_back div.circle a {
+    background: 8px center url(../images/icons/wl_arrow.png) no-repeat;
+}
+
+.header .icon_back:hover div.circle a {
+    background: 8px center url(../images/icons/whl_arrow.png) no-repeat;
+}
+
+.header .icon_back.active:hover div.circle a {
+    background: 8px center url(../images/icons/wl_arrow.png) no-repeat;
+}
+
+.header .icon_back.active div.circle a {
+    background: 8px center url(../images/icons/wl_arrow.png) no-repeat;
+}
+
+.header .icon_support div.circle a {
+    background: center center url(../images/icons/w_support.png) no-repeat;
+}
+
+.header .icon_support:hover div.circle a {
+    background: center center url(../images/icons/wh_support.png) no-repeat;
+}
+
+.header .icon_support.active:hover div.circle a {
+    background: center center url(../images/icons/w_support.png) no-repeat;
+}
+
+.header .icon_support.active div.circle a {
+    background: center center url(../images/icons/w_support.png) no-repeat;
+}
+
+.header .icon_overview a {
+    background: center center url(../images/icons/w_overview.png) no-repeat;
+}
+
+.header .icon_overview:hover a {
+    background: center center url(../images/icons/wh_overview.png) no-repeat;
+}
+
+.header .icon_overview.active:hover a {
+    background: center center url(../images/icons/w_overview.png) no-repeat;
+}
+
+.header .icon_overview.active a {
+    background: center center url(../images/icons/w_overview.png) no-repeat;
+}
+
+.header .rtb li.icon_close div.circle {
+    background: none;
+}
+
+.header .icon_close div.circle a {
+    background: url(../images/icons/btn_close_login.png) top left;
+}
+
+.header .icon_close div.circle a:hover {
+    background-position: 53px 0
+}
+
+.header .icon_close div.circle a:active, .header .icon_close div.circle a:active {
+    background-position: 26px 0;
+}
+
+.stand_input {
+    width: 180px;
+    height: 29px;
+    border-radius: 5px;
+    background: #ccc;
+    position: relative;
+    float: left;
+    z-index: 100;
+}
+
+.stand_input.select {
+    background: #000;
+}
+
+.stand_input input[type="text"] {
+    width: 140px;
+    border: none;
+    background: none;
+    color: #000;
+    margin: 6px 0 0 8px;
+    font-size: 14px;
+}
+
+.stand_input.negativ input[type="text"] {
+    color: #fff
+}
+
+.stand_input > div.icon {
+    position: absolute;
+    z-index: 3;
+    right: 10px;
+    height: 18px;
+    width: 18px;
+    top: 5px;
+    background: url("../images/icons/btn_content_open.png");
+    cursor: pointer;
+}
+
+.stand_input > div.icon:hover {
+    background-position: 37px 0;
+}
+
+.header .filter {
+    min-width: 860px;
+}
+
+.header .inp_group {
+    margin: 0 40px 0 0;
+}
+
+.stand_input select {
+    display: none;
+}
+
+.stand_input.select label {
+    width: 145px;
+    float: left;
+    margin-left: 6px;
+    font-size: 14px;
+    padding: 7px 0;
+    cursor: pointer;
+    line-height: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.stand_input.select ul {
+    display: none;
+    float: left;
+    width: 97%;
+    margin: 0 0 8px 6px;
+    font-size: 14px;
+    position: relative;
+}
+
+.stand_input.select.active {
+    background: #1c86b1;
+    height: auto;
+}
+
+.stand_input.select ul li {
+    float: left;
+    width: calc(100% - 20px);
+    color: #000;
+    padding: 3px 0;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stand_input.select ul li:hover {
+    color: #fff
+}
+
+.stand_input.select.active ul {
+    display: block;
+}
+
+.stand_input.select.negativ label {
+    color: #fff;
+}
+
+.stand_input.select.negativ > div {
+    background: url("../images/icons/select_negative.png");
+}
+
+.stand_input.select.negativ.active > div {
+    background: url("../images/icons/select_negative_open.png");
+}
+
+.stand_input.select:hover > div, #libraryView .stand_input.select.negativ.active:hover > div {
+    background-position: 38px 0;
+}
+
+.stand_input.select:active > div, #libraryView .stand_input.select.active:active > div {
+    background-position: 19px 0;
+}
+
+.stand_input.select:hover > div {
+    background-position: 38px 0;
+}
+
+.stand_input.select:active > div {
+    background-position: 19px 0;
+}
+
+.stand_input.select.active label {
+    display: none;
+}
+
+.stand_input.select.active .activeItem {
+    color: white;
+    font-weight: bold;
+}
+
+.stand_input > div.erase {
+    background: url(../images/icons/btn_erase.png);
+}
+
+.stand_input > div.erase:hover {
+    background-position: 37px 0;
+}
+
+.stand_input > div.erase:active {
+    background-position: 18px 0;
+}
+
+.round_select {
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.custom_groupbox .ch_body {
+    background: none repeat scroll 0 0 #000000;
+    border-radius: 13px;
+    float: left;
+    height: 26px;
+    position: absolute;
+    z-index: 98;
+}
+
+.custom_groupbox .ch_body.active {
+    background-color: #2A9FCF;
+}
+
+.custom_groupbox {
+    height: 26px;
+    position: relative;
+    float: left;
+}
+
+.custom_groupbox input {
+    display: none;
+}
+
+.custom_groupbox .ch_body > div {
+    float: left;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 100;
+}
+
+.custom_groupbox .ch_body > div.check {
+    cursor: default;
+}
+
+.custom_groupbox .ch_body .check_disk {
+    background: url("../images/icons/progress_circle.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    height: 26px;
+    position: absolute;
+    width: 26px;
+    z-index: 99;
+}
+
+ul.soc li {
+    list-style: none;
+    margin: 0 10px 15px 0;
+    float: left;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    padding: 0
+}
+
+ul.soc li:hover {
+    background-position: 26px top;
+}
+
+ul.soc li.mail {
+    background-image: url(../images/icons/btn_mail.png);
+}
+
+ul.soc li.fb {
+    background-image: url(../images/icons/btn_fb.png);
+}
+
+ul.soc li.tw {
+    background-image: url(../images/icons/btn_tw.png);
+}
+@media screen and (max-width: 1180px) {
+     #overviewView .header .overviewSearch .stand_input input[type="text"]{
+        width: 125px;
+    }
+    #overviewView .header .overviewSearch .stand_input{
+        width: 170px;
+    }
+    .stand_input {
+        width: 140px
+    }
+
+    .header .inp_group {
+        margin-right: 20px;
+    }
+
+    .stand_input.select label {
+        width: 104px;
+        height: 1.1em;
+        padding-bottom: 0;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+@media screen and (max-width: 950px) {
+
+    #overviewView .header .workline .inp_group {
+        margin-right: 7px;
+        margin-left: 12px;
+    }
+    html {
+        -ms-text-size-adjust: none;
+        -webkit-text-size-adjust: none;
+    }
+
+}
+
+#libraryView .mainlist .action li {
+     width: 26px;
+     height: 26px;
+     position: relative;
+     float: left;
+     margin: 0 5px;
+ }
+
+#libraryView .mainlist .action li > .ico {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 7;
+}
+
+.action li {
+    float: left;
+    margin: 0 5px;
+}
+
+.action li > .ico {
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.action li > .ico:hover {
+    background-position: -27px top;
+}
+
+.action li.info > .ico {
+    background-image: url(../images/icons/btn_info.png);
+}
+
+.action li.read > .ico {
+    background-image: url(../images/icons/btn_read.png);
+}
+
+.action li.version > .ico {
+    background-image: url(../images/icons/btn_version2.png);
+}
+
+.action li.version.invert > .ico {
+    background-image: url(../images/icons/btn_version.png);
+}
+
+.action li.putondesk > .ico {
+    background-image: url(../images/icons/btn_putondesk_ext.png);
+}
+
+.action li.shop > .ico {
+    background-image: url(../images/icons/btn_shop2.png);
+}
+
+.action li.putondesk.invert > .ico, #libraryView .action li.putondesk.invert > .ico:hover {
+    background-position: -54px 0;
+}
+
+.impressumContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 997;
+    opacity: 0.97;
+}
+
+.impressumContainer .close {
+    position: absolute;
+    z-index: 7;
+    top: -7px;
+    right: -7px;
+    width: 19px;
+    height: 19px;
+    background: url(../images/icons/popover_close.png);
+    cursor: pointer;
+    box-shadow: 1px -1px 2px 0 #A4A4A4;
+    border-radius: 9px;
+}
+
+.impressumContent {
+    padding: 20px 20px 20px 30px;
+    position: absolute;
+    width: 50%;
+    left: 25%;
+    top: 50px;
+    bottom: 50px;
+    background-color: white;
+    z-index: 1000;
+    overflow: visible;
+}
+
+.impressumContent iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.dseContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 997;
+    opacity: 0.97;
+}
+
+.dseContainer .close {
+    position: absolute;
+    z-index: 7;
+    top: -7px;
+    right: -7px;
+    width: 19px;
+    height: 19px;
+    background: url(../images/icons/popover_close.png);
+    cursor: pointer;
+    box-shadow: 1px -1px 2px 0 #A4A4A4;
+    border-radius: 9px;
+}
+
+.dseContent {
+    padding: 20px 20px 20px 30px;
+    position: absolute;
+    width: 50%;
+    left: 25%;
+    top: 50px;
+    bottom: 50px;
+    background-color: white;
+    z-index: 1000;
+    overflow: visible;
+}
+
+.dseContent iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.logo {
+    position: absolute;
+    left: 31px;
+    bottom: -20px;
+    width: 104px;
+    height: 104px;
+    background: url(../blank.gif) top left no-repeat;
+}
+
+.loginLogo {
+    background: url(../blank.gif) top left no-repeat;
+    margin: 0 auto;
+	width: 70px;
+    height: 70px;
+    background-size: contain;
+}
+
+.impressum {
+    font-size: 12px;
+    overflow: auto;
+    height: 100%;
+}
+
+.impressum h1 {
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+.impressum h2 {
+    font-size: 1.5em;
+    margin: 1em 0;
+}
+
+.impressum p {
+    margin: 1em 0;
+}
+
+.dse {
+    font-size: 12px;
+    overflow: auto;
+    height: 100%;
+}
+
+.dse h1 {
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+.dse h2 {
+    font-size: 1.5em;
+    margin: 1em 0;
+}
+
+.dse p {
+    margin: 1em 0;
+}
+
+.btn.help {
+    display: none;
+    background: url(../images/icons/btn_help.png);
+    width: 26px;
+    height: 26px;
+}
+
+.btn.help:hover {
+    background-position: -27px 0;
+}
+
+#docView .header .ltb li.help {
+    display: none;
+}
+
+/*** Settings popover ***/
+
+.icon_settings div.clearCache {
+    display: inline-block;
+    float: left;
+    margin-bottom: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+/*** Custom popup and overlay ***/
+
+#customPopupOverlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.5;
+    background: black;
+    z-index: 1000;
+    display: none;
+}
+
+.customPopupContent {
+    position: fixed;
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    -ms-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
+    width: 310px;
+    min-height: 100px;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    z-index: 1001;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 3px 3px 0 #A4A4A4;
+    display: none;
+}
+
+.customPopupContent h2 {
+    text-transform: uppercase;
+    border-bottom: 1px solid #555;
+    text-align: center;
+}
+
+.customPopupContent b {
+    color: #333;
+}
+
+.customPopupContent p {
+    margin: 5px 0;
+}
+
+.customPopupContent p:first-child {
+    margin-top: 0;
+}
+
+.customPopupContent p:last-child {
+    margin-bottom: 0;
+}
+
+.customPopupContent .message {
+    font-size: 15px;
+    margin: 20px 0;
+}
+
+.customPopupContent .buttons {
+    text-align: center;
+}
+
+.customPopupContent .buttons .button {
+    display: inline-block;
+    height: 28px;
+    border-radius: 13px;
+    border: 1px solid #2A9FCF;
+    background-color: #2A9FCF;
+    color: #fff;
+    line-height: 28px;
+    padding: 0 25px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.customPopupContent .buttons .button:hover {
+    background-color: #1C86B1;
+    border: 1px solid #1C86B1;
+}
+
+.customPopupContent.javaFreeNotification {
+    width: 510px;
+}
+
+.customPopupContent.javaFreeNotification h2 {
+    font-family: OpenSans-Bold;
+}
+
+/*** iScroll scrollbars adjusting ***/
+
+.iScrollHorizontalScrollbar {
+    height: 10px !important;
+}
+
+.iScrollVerticalScrollbar {
+    width: 10px !important;
+}
+
+.iScrollIndicator {
+    border-radius: 10px !important;
+}
+
+.iScrollBothScrollbars, .iScrollLoneScrollbar {
+    z-index: 5 !important;
+}
+
+/*** ZeroClipboard adjusting ***/
+
+.global-zeroclipboard-container {
+    opacity: 0.1;
+    cursor: pointer;
+}
+
+.global-zeroclipboard-container.disabled {
+    cursor: not-allowed;
+}
+
+.queueStats {
+    display: none;
+    position: fixed;
+    z-index: 2500;
+    width: 120px;
+    top: 90px;
+    right: 20px;
+    border: 1px solid red;
+    color: red;
+    font-weight: bold;
+    background-color: black;
+    font-size: small;
+    font-family: monospace;
+    opacity: 0.8;
+    padding: 5px;
+}

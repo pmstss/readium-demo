@@ -1,0 +1,59 @@
+#epubContainer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.twoPagesContainer {
+    padding: 20px 35px;
+    box-sizing: border-box;
+}
+
+.twoPages, .page {
+    width: 100%;
+    height: 100%;
+}
+
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -33px 0 0 -33px;
+    z-index: 1000;
+}
+
+#docView li.disabled {
+    opacity: 0.5;
+    cursor: default !important;
+}
+
+.header h1 span {
+    margin-left: 10px;
+}
+
+.loadEpub {
+    width: 150px;
+    float: left;
+    padding: 3px 0 0 10px;
+}
+
+#docView .header .ltb {
+    min-width: 210px;
+}
+
+.books .fe > div {
+    overflow: auto;
+    max-height: 500px;
+    width: 600px;
+}
+
+.books .fe > div .row {
+    margin: 3px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.books .fe > div .row > div:not(.caption) {
+    white-space: normal;
+}

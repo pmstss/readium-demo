@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>lookup epub.js demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/docView.css">
+    <link rel="stylesheet" href="styles/libraryView.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/readium_js.css">
+    <!-- endbuild -->
+
+    <script id="templateTOCItemList" type="text/x-handlebars-template">
+        <ul {{#ifEq level 0}}class="first"{{else}}{{#ifEq level 1}}class="second"{{/ifEq}} style="display:none"{{/ifEq}}>
+        {{#each items}}
+        <li class="{{#if leaf}}leaf{{/if}}">{{{html}}}</li>
+        {{/each}}
+        </ul>
+    </script>
+
+    <script id="templateTOCItemContent" type="text/x-handlebars-template">
+        <p data-dst="{{href}}">{{label}}</p>
+        <div></div>
+    </script>
+
+    <script id="templateFooterView" type="text/x-handlebars-template">
+        <div class="spreadContainer">
+            <span class="spread"></span>
+            <!--table class="spread2">
+                <tr>
+                    <td class="ln"><span></span></td>
+                    <td class="rn"><span></span></td>
+                </tr>
+            </table-->
+        </div>
+        <div class="progress_scroll">
+            <div class="line"></div>
+            <div class="circle"></div>
+            <div class="thumb">
+                <img class="thumb" src="blank.gif"/>
+                <span class="thumbLabelBg">&nbsp;</span>
+                <span class="thumbLabel">&nbsp;</span>
+            </div>
+        </div>
+        <div class="ipn">
+            <input class="currentPage" type="text" value=""/>
+            <p>/ <span class="totalPages">&nbsp;</span></p>
+        </div>
+    </script>
+
+    <script id="templateBooksList" type="text/x-handlebars-template">
+        <div class="row">
+            <div class="caption" id="epub30-spec"><a href="#book/epub30-spec" title="Open book">EPUB 3.0 Specification</a></div>
+            <div> The <a target="_blank" href="http://idpf.org/epub/30">EPUB 3.0 specifications</a> in EPUB 3.0 format. </div>
+        </div>
+        <div class="row">
+            <div class="caption" id="trees"><a href="#book/trees" title="Open book">Trees</a></div>
+            <div> This sample contains the HTML5 canvas element used to draw decorational trees on page load.
+            </div>
+        </div>
+        <div class="row">
+            <div class="caption" id="mathjax_tests"><a href="#book/mathjax_tests" title="Open book">MathJax</a></div>
+            <div>Basic formulas (<a target="_blank" href="https://www.mathjax.org/" title="MathJax">MathJax</a>) sample</div>
+        </div>
+        <div class="row">
+            <div class="caption" id="cc-shared-culture"><a href="#book/cc-shared-culture" title="Open book">Creative Commons Shared Culture</a></div>
+            <div>The video, audio and text from <a target="_blank" href="http://creativecommons.org/videos/a-shared-culture">Creative Commons A Shared Culture</a> in EPUB form; each spine item containing a variation of <code>&lt;video&gt;</code>/<code>&lt;audio&gt;</code> embedding.
+            </div>
+        </div>
+        <div class="row">
+            <div class="caption" id="hefty-water"><a href="#book/hefty-water" title="Open book">Hefty Water</a></div>
+            <div> This sample contains one instance of the epub:switch element. There is also a little bit of ruby markup available, used to render captions under/over chemical formula segments. </div>
+        </div>
+        <div class="row">
+            <div class="caption" id="figure-gallery"><a href="#book/figure-gallery-bindings" title="Open book">Figure Gallery</a></div>
+            <div> A <a target="_blank" href="http://idpf.org/epub/30/spec/epub30-publications.html#sec-bindings-elem">bindings</a>-based "object rotator". This particular sample represents an image gallery with caption fields.
+            </div>
+        </div>
+        <div class="row">
+            <div class="caption" id="internallinks"><a href="#book/internallinks" title="Open book">Internal Links</a></div>
+            <div>Test document for internal linking.</div>
+        </div>
+        <div class="row">
+            <div class="caption" id="israelsailing"><a href="#book/israelsailing" title="Open book">Israel Sailing</a></div>
+            <div>BIDI, page-progression-direction, rtl, and Hebrew text. </div>
+        </div>
+        <div class="row">
+            <div class="caption" id="kusamakura"><a href="#book/kusamakura-japanese-vertical-writing" title="Open book">Kusamakura</a></div>
+            <div>A Japanese Novel <a target="_blank" href="http://en.wikipedia.org/wiki/Kusamakura_(novel)">Kusamakura</a>. This EPUB publication has features as Vertical Writing, Ruby, Media overlay, Non-ASCII file names and Internationalized Resource Identifiers, Emphasis Dots, Embedded OpenType font for U+2014, EPUB3 metadata including phonetics, XMP metadata
+            </div>
+        </div>
+        <div class="row">
+            <div class="caption" id="linear-algebra"><a href="#book/linear-algebra" title="Open book">Linear Algebra</a></div>
+            <div>A First Course in Linear Algebra, available in its canonical version at <a target="_blank" href="http://linear.ups.edu">http://linear.ups.edu</a>. This sample contains substantive amounts of <a target="_blank" href="http://www.w3.org/TR/MathML3/MathML">MathML</a>.
+            </div>
+        </div>
+        <!--div class="row">
+            <div class="caption" id="quiz"><a href="#book/quiz-bindings" title="Open book">Quiz</a></div>
+            <div> A <a target="_blank" href="http://idpf.org/epub/30/spec/epub30-publications.html#sec-bindings-elem">bindings</a>-based "quiz". This particular sample represents a multiple-choice quiz with a self-checking feature. Allows for three types of quizzes: all questions at once, one question at a time, and one question at a time with immediate feedback ("flashcard" mode). Implementations that do not support <a target="_blank" href="http://idpf.org/epub/30/spec/epub30-publications.html#sec-bindings-elem">bindings</a> will fallback to display all questions and possible answers as a static list. </div>
+        </div>
+        <div class="row">
+            <div class="caption" id="sous-le-vent"><a href="#book/sous-le-vent" title="Open book">Sous le vent</a></div>
+            <div> An extract of a <a target="_blank" href="http://www.idpf.org/epub/fxl/">fixed layout document</a>, using SVG embedded in XHTML spine items.</div>
+        </div-->
+        <div class="row">
+            <div class="caption" id="mymedia-lite"><a href="#book/mymedia_lite" title="Open book">Vertical Writing</a></div>
+            <div>Vertical writing, page-progression-direction rtl, and alternate stylesheets for vertical/horizontal writing. </div>
+        </div>
+        <div class="row">
+            <div class="caption" id="moby-dick"><a href="#book/moby-dick" title="Open book">Moby Dick</a></div>
+            <div> Herman Melville's <i>Moby-Dick </i> with one spine item per chapter. Includes embedded fonts (OpenType). Default book of epub.js developers.</div>
+        </div>
+    </script>
+
+</head>
+<body class="library doc">
+<div id="docView" class="tb">
+    <div class="tools out">
+        <ul>
+            <li class="tool_marker">
+                <div class="circle"><a class="tool_marker" href="#" title="Textauswahl">&nbsp;</a></div>
+            </li>
+            <li class="tool_drag_page active">
+                <div class="circle"><a class="tool_drag_page" href="#" title="Dokument verschieben">&nbsp;</a></div>
+            </li>
+        </ul>
+        <div class="divider"></div>
+        <ul>
+            <li class="tool_zoom_in">
+                <div class="circle"><a class="tool_zoom_in" href="#" title="Zoom in">&nbsp;</a></div>
+            </li>
+            <li class="tool_zoom_out">
+                <div class="circle"><a class="tool_zoom_out" href="#" title="Zoom out">&nbsp;</a></div>
+            </li>
+            <li class="tool_expand">
+                <div class="circle"><a class="tool_expand" href="#" title="Reset zoom">&nbsp;</a></div>
+            </li>
+        </ul>
+        <div class="divider"></div>
+        <ul>
+            <li class="tool_fullscreen">
+                <div class="circle"><a class="tool_fullscreen" href="#" data-title-false="Vollbildmodus"
+                                       data-title-true="Vollbildmodus beenden" title="Vollbildmodus">&nbsp;</a></div>
+            </li>
+            <li class="tool_tb">
+                <div class="circle"><a class="tool_tb" href="#" data-title-false="Show toolbars"
+                                       data-title-true="Hide toolbars" title="Hide toolbars">
+                    &nbsp;</a></div>
+            </li>
+        </ul>
+        <div class="toolsSlider"></div>
+    </div>
+    <div class="header">
+        <table>
+            <tbody>
+            <tr>
+                <td class="ltb">
+                    <input type="file" class="loadEpub"/>
+                    <!--a href="#" class="btn gotoLibrary"><span>Bibliothek</span></a-->
+                    <ul>
+                        <li class="settings books">
+                            <div class="circle"><a href="#" title="Einstellungen">&nbsp;</a></div>
+                            <div class="fe">
+                                <div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </td>
+                <td class="headerContainer">
+                    <h1></h1>
+                </td>
+                <td class="rtb">
+                    <ul class="headerIcons">
+                        <li class="toc">
+                            <div class="circle"><a href="#" title="Inhaltsverzeichnis">&nbsp;</a></div>
+                            <div class="fe">
+                                <div style="width: 473.6px; height: 180px;">
+                                    <h2>Inhaltsverzeichnis</h2>
+
+                                    <div class="line"></div>
+                                    <div class="content">
+                                        <ul class="first">
+                                        </ul>
+                                    </div>
+                                    <div class="close"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="twoPagesContainer">
+        <div id="epubContainer"></div>
+    </div>
+    <div class="pageNavigationContainer">
+        <div class="page_navigation prev" title="Zuruck">
+            <a class="arrow">&nbsp;</a>
+        </div>
+        <div class="page_navigation next" title="Weiter">
+            <a class="arrow">&nbsp;</a>
+        </div>
+    </div>
+</div>
+
+<div id="footer">
+    <div class="pagesSliderContainer">
+    </div>
+</div>
+
+<div id="loader"><img src="loader.gif"></div>
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/requirejs/require.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({app,.tmp}) scripts/main.js -->
+<script src="scripts/readium/require_config.js"></script>
+<script src="scripts/readium/Readium.js"></script>
+<script src="scripts/handlebarsHelpers.js"></script>
+<script src="scripts/declare.js"></script>
+<script src="scripts/utils.js"></script>
+<script src="scripts/readiumUtils.js"></script>
+<script src="scripts/appState.js"></script>
+<script src="scripts/docView.js"></script>
+<script src="scripts/docHeaderView.js"></script>
+<script src="scripts/docTocView.js"></script>
+<script src="scripts/docFooterView.js"></script>
+<script src="scripts/docPageNavigationView.js"></script>
+<script src="scripts/docToolsView.js"></script>
+<script src="scripts/router.js"></script>
+<!-- endbuild -->
+
+<script>
+    require(['jquery'], function ($) {
+        $(function () {
+            require(['Readium', 'jquery', 'backbone', 'handlebars'], function () {
+                console.log('### before initializing router');
+                LookUp.router = new LookUp.Router();
+                Backbone.history.start();
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

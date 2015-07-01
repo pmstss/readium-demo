@@ -1,0 +1,1264 @@
+body.doc {
+    overflow: hidden;
+}
+
+#docView {
+    clip: rect(0, auto, auto, 0);   /* will be overridden dynamically */
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;  /* Chrome elements disappearing fix */
+    z-index: 20;
+    transition: clip 0.3s;
+}
+
+#docView.hide {
+    clip: rect(0, 0, auto, 0);
+}
+
+#docView .headerContainer {
+    width: 100%;
+}
+
+/*** fe ***/
+
+#docView li div.fe > div {
+    font-size: 14px;
+    padding: 20px;
+}
+
+#docView li div.fe > div h2 {
+    font-family: OpenSans-Bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#docView li div.fe > div .content h2 {
+    font-family: OpenSans-Regular;
+}
+
+#docView li div.fe > div h2.up {
+    text-transform: uppercase;
+}
+
+#docView li div.fe > div p {
+    font-size: 14px;
+    height: 2em;
+    line-height: 2em;
+}
+
+#docView li div.fe > div .line {
+    border-top: 2px solid #858585;
+    margin: 10px 0;
+}
+
+/*** Footer ***/
+
+body.doc #footer {
+    z-index: 25;
+    font-size: 0;
+}
+
+body.doc #docView.tb ~ #footer {
+    bottom: 0
+}
+
+body.doc #footer .spreadContainer {
+    width: 100px;
+    height: 100%;
+    text-align: center;
+    display: inline-block;
+    float: left;
+}
+
+body.doc #footer .spreadContainer .spread {
+    display: none;
+    color: white;
+    font-size: 10px;
+    border: 1px solid white;
+    height: 17px;
+    line-height: 17px;
+    text-align: center;
+    padding: 0 5px;
+    position: relative;
+    top: 10px;
+}
+
+body.doc #footer .spreadContainer .lbwStatusNew {
+    background-color: #0c0 !important;
+}
+
+body.doc #footer .spreadContainer .lbwStatusRemoved {
+    background-color: #d00 !important;
+}
+
+body.doc #footer .spread2 {
+    display: inline-block;
+    height: 100%;
+    position: relative;
+    top: 10px;
+}
+
+body.doc #footer .spread2 td {
+    color: #fff;
+    height: 21px;
+    width: 30px;
+    font-size: 10px;
+}
+
+body.doc #footer .spread2 td span {
+    float: left;
+    width: calc(100% - 2px);
+    height: 16px;
+    margin: 1px;
+    text-align: center;
+    line-height: 16px;
+}
+
+body.doc #footer .spread2 td.ln {
+    background: left top url(../images/icons/spread_left.png) no-repeat;
+}
+
+body.doc #footer .spread2 td.ln span {
+    border-top-right-radius: 4px;
+}
+
+body.doc #footer .spread2 td.rn {
+    background: right top url(../images/icons/spread_right.png) no-repeat;
+}
+
+body.doc #footer .spread2 td.rn span {
+    border-top-left-radius: 4px;
+}
+
+body.doc #footer .ipn {
+    display: inline-block;
+    width: 160px;
+    height: 100%;
+    position: relative;
+    top: 5px;
+}
+
+body.doc #footer .ipn input[type="text"] {
+    float: left;
+    height: 24px;
+    width: 88px;
+    background-color: #ffffff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: #000;
+    font-size: 14px;
+    text-align: center;
+}
+
+body.doc #footer .ipn p {
+    float: left;
+    color: #fff;
+    font-size: 14px;
+    margin: 7px 0 0 7px;
+    line-height: 1em;
+}
+
+body.doc #footer .progress_scroll {
+    display: inline-block;
+    width: calc(100% - 336px);
+    height: 100%;
+    margin: 0 56px 0 20px;
+    position: relative;
+}
+
+body.doc #footer .progress_scroll .line {
+    position: absolute;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    top: 19px;
+    width: calc(100% + 26px);
+}
+
+body.doc #footer .progress_scroll .circle {
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    background: left top url(../images/icons/progress_circle.png) no-repeat;
+    top: 7px;
+    cursor: pointer;
+}
+
+body.doc #footer .progress_scroll div.thumb {
+    position: absolute;
+    max-width: 200px;
+    max-height: 200px;
+    bottom: 35px;
+    border: 2px solid #1C86B1;
+    display: none;
+    z-index: 1;
+    opacity: 0.9
+}
+
+body.doc #footer .progress_scroll div.thumb .thumbLabelBg {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    height: 21px;
+    opacity: 0.7;
+}
+
+body.doc #footer .progress_scroll div.thumb .thumbLabel {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 29;
+    color: #ddd;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+/*** DocToolsView ***/
+
+#docView .tools {
+    position: relative;
+    width: 335px;
+    height: 48px;
+    top: -30px;
+    margin: 0 auto;
+    background: left top url(../images/tools_bg.png) no-repeat;
+    background-size: 335px 48px;
+    z-index: 25;
+    transition: top 0.2s;
+}
+
+#docView .tools > ul:first-child {
+    float: left;
+    margin-left: 36px;
+}
+
+#docView .tools > ul {
+    float: left;
+    margin-top: 4px;
+}
+
+#docView .tools .divider {
+    float: left;
+    width: 2px;
+    height: 26px;
+    background: left top url(../images/icons/divider.png) no-repeat;
+    margin: 2px 10px 0 0;
+}
+
+#docView .tools li {
+    float: left;
+    margin: 0 10px 0 0;
+    white-space: nowrap;
+    width: 26px;
+    height: 26px;
+    position: relative;
+}
+
+#docView .tools li.disabled {
+    opacity: 0.5;
+    cursor: default !important;
+}
+
+#docView .tools li a {
+    float: left;
+    white-space: nowrap;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    background: no-repeat center center;
+}
+
+#docView .tools li div.circle {
+    float: left;
+    background: center center url(../images/icons/w_circle.png) no-repeat;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 26;
+}
+
+#docView .tools li.disabled a {
+    cursor: default;
+}
+
+#docView .tools li:not(.disabled):hover div.circle {
+    background-image: url(../images/icons/wh_circle.png);
+}
+
+#docView .tools li.active:not(.disabled) div.circle, #docView .tools li:not(.disabled):active div.circle {
+    background: center center url(../images/icons/blue_disc.png) no-repeat;
+}
+
+#docView .tools li.tool_marker a {
+    background-image: url(../images/icons/tool_marker.png);
+}
+
+#docView .tools li.tool_marker:hover:not(:active):not(.active) a {
+    background-image: url(../images/icons/tool_marker_h.png);
+}
+
+#docView .tools li.tool_drag_page a {
+    background-image: url(../images/icons/tool_drag_page.png);
+}
+
+#docView .tools li.tool_drag_page:hover:not(:active):not(.active) a {
+    background-image: url(../images/icons/tool_drag_page_h.png);
+}
+
+#docView .tools li.tool_fullscreen a {
+    background-image: url(../images/icons/tool_fullscreen.png);
+}
+
+#docView .tools li.tool_fullscreen:not(.disabled):hover:not(:active):not(.active) a {
+    background-image: url(../images/icons/tool_fullscreen_h.png);
+}
+
+#docView .tools li.tool_fullscreen.invert a {
+    background-image: url(../images/icons/tool_fullscreen_end.png);
+}
+
+#docView .tools li.tool_fullscreen.invert:hover:not(:active):not(.active) a {
+    background-image: url(../images/icons/tool_fullscreen_end_h.png);
+}
+
+#docView .tools li.tool_zoom_out a {
+    background-image: url(../images/icons/tool_zoom_out.png);
+}
+
+#docView .tools li.tool_zoom_out:not(.disabled):not(:active):hover a {
+    background-image: url(../images/icons/tool_zoom_out_h.png);
+}
+
+#docView .tools li.tool_zoom_in a {
+    background-image: url(../images/icons/tool_zoom_in.png);
+}
+
+#docView .tools li.tool_zoom_in:not(.disabled):not(:active):hover a {
+    background-image: url(../images/icons/tool_zoom_in_h.png);
+}
+
+#docView .tools li.tool_tb a {
+    background-image: url(../images/icons/tool_hide_tb.png);
+}
+
+#docView .tools li.tool_tb:hover:not(:active):not(.active) a {
+    background-image: url(../images/icons/tool_hide_tb_h.png);
+}
+
+#docView .tools li.tool_tb.invert a {
+    background-image: url(../images/icons/tool_show_tb.png);
+}
+
+#docView .tools li.tool_tb.invert:hover:not(:active):not(.active) a {
+    background-image: url(../images/icons/tool_show_tb_h.png);
+}
+
+#docView .tools li.tool_expand a {
+    background-image: url(../images/icons/tool_expand.png);
+}
+
+#docView .tools li.tool_expand:hover:not(:active):not(.active) a {
+    background-image: url(../images/icons/tool_expand_h.png);
+}
+
+#docView.tb .tools {
+    top: 7px;
+}
+
+#docView.tb .tools.out {
+    top: 38px;
+}
+
+#docView .tools.out {
+    top: 0;
+}
+
+#docView .tools .toolsSlider {
+    position: absolute;
+    width: 100%;
+    height: 17px;
+    bottom: 0;
+    background: url(../images/icons/arrow_bottom.png) bottom 4px center no-repeat;
+    cursor: pointer;
+}
+
+#docView .tools .toolsSlider:hover {
+    background: url(../images/icons/arrow_bottom_h.png) bottom 4px center no-repeat;
+}
+
+#docView .tools.out .toolsSlider {
+    background: url(../images/icons/arrow_top.png) bottom 4px center no-repeat;
+}
+
+#docView .tools.out .toolsSlider:hover {
+    background: url(../images/icons/arrow_top_h.png) bottom 4px center no-repeat;
+}
+
+/*** Header ***/
+
+#docView .header .ltb {
+    min-width: 170px;
+    padding-top: 6px;
+}
+
+#docView .header .ltb > ul {
+    margin-left: 10px;
+    margin-top: 0;
+    white-space: nowrap;
+    width: auto;
+}
+
+#docView .header .btn.gotoLibrary {
+    float: left;
+    height: 26px;
+    width: 103px;
+    margin-left: 20px;
+    cursor: pointer;
+    background: top left url(../images/icons/btn_library.png);
+}
+
+#docView .header .btn.gotoLibrary:hover {
+    background-position: left 26px;
+}
+
+#docView .header .btn.gotoLibrary span {
+    float: left;
+    font-size: 14px;
+    color: #fff;
+    margin-left: 32px;
+    line-height: 26px;
+}
+
+/*** Settings popover ***/
+
+#docView .header .settings div.circle a, #docView .header .settings.active:hover div.circle a,
+        #docView .header .settings.active div.circle a {
+    background: center center url(../images/icons/w_settings.png) no-repeat;
+}
+
+#docView .header .settings:hover div.circle a {
+    background: center center url(../images/icons/wh_settings.png) no-repeat;
+}
+
+#docView .header .settings > .fe > div {
+    min-width: 150px;
+}
+
+#docView .header .settings > .fe .content h3 {
+    font-weight: bold;
+}
+
+#docView .header .settings > .fe .content > div {
+    margin: 10px 0;
+}
+
+#docView .header .settings > .fe .content > div:last-child {
+    margin: 0;
+}
+
+/*** TOC popover ***/
+
+#docView .header .toc div.circle a, #docView .header .toc.active:hover div.circle a,
+        #docView .header .toc.active div.circle a {
+    background: center center url(../images/icons/w_content.png) no-repeat;
+}
+
+#docView .header .toc:hover div.circle a {
+    background: center center url(../images/icons/wh_content.png) no-repeat;
+}
+
+#docView .header li.toc div.fe > div {
+    left: auto;
+    right: -15px;
+}
+
+#docView .toc .content {
+    height: calc(100% - 40px);
+    margin: 0 15px;
+    overflow-y: auto;
+}
+
+#docView .toc .content ul {
+    float: left;
+    width:  100%;
+}
+
+#docView .toc .content li {
+    float: left;
+    width:  100%;
+    border-bottom: 2px solid #c3c3c3;
+}
+
+#docView .toc .content li li {
+    border-bottom: none;
+}
+
+#docView .toc .content li p {
+    float: left;
+    font-family: OpenSans-Light;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    width: calc(100% - 25px);
+}
+
+#docView .toc .content ul.first li p {
+    font-family: OpenSans-Regular;
+    font-size: 14px;
+}
+
+#docView .toc .content ul.second li p {
+    font-family: OpenSans-Light;
+    font-size: 14px;
+}
+
+#docView .toc .content li > div {
+    float: right;
+    width: 18px;
+    height: 2em;
+    background: center center url(../images/icons/btn_open_normal.png) no-repeat;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+#docView .toc .content li > div:hover {
+    background-image: url(../images/icons/btn_open_normal_hover.png);
+}
+
+#docView .toc .content li.act > div {
+    background-image: url(../images/icons/btn_close.png);
+}
+
+#docView .toc .content li.leaf > div {
+    display: none;
+}
+
+#docView .toc .content li.leaf, #docView .toc .content li:not(.act) {
+    border: none;
+}
+
+#docView .toc .content li.leaf > p {
+    width: calc(100% - 5px);
+}
+
+#docView .toc .content ul:not(.first) {
+    width: 95%;
+    margin-left: 5%;
+}
+
+/*** Search popover ***/
+
+#docView .search div.circle a {
+    background: center center url(../images/icons/w_search.png) no-repeat;
+}
+
+#docView .search:hover div.circle a {
+    background: center center url(../images/icons/wh_search.png) no-repeat;
+}
+
+#docView .search.active:hover div.circle a {
+    background: center center url(../images/icons/w_search.png) no-repeat;
+}
+
+#docView .search.active div.circle a {
+    background: center center url(../images/icons/w_search.png) no-repeat;
+}
+
+#docView .search div.fe > div {
+    width: 430px;
+    left: auto;
+    right: -3px;
+    min-width: 456px;
+}
+
+#docView .search .searchQueryContainer {
+    width: 96%;
+    height: auto;
+    display: table;
+    margin: 10px 2%;
+}
+
+#docView .search .searchQueryContainer .loop {
+    float: right;
+    width: 27px;
+    height: 29px;
+    background: 0 center url(../images/icons/btn_loop.png) no-repeat;
+    cursor: pointer;
+}
+
+#docView .search .searchQueryContainer .loop:hover {
+    background-position: -27px center;
+}
+
+#docView .search .searchQueryContainer .containerAux {
+    float: left;
+    width: calc(100% - 37px);
+    border-radius: 6px;
+    position: relative;
+}
+
+#docView .search .searchQueryContainer .containerAux.act {
+    background: #000;
+}
+
+#docView .search .searchQueryContainer .containerAux .searchOperations {
+    display: none;
+    position: static;
+    top: 100%;
+    width: 98%;
+    padding-left: 2%;
+    height: 39px;
+    overflow: hidden;
+    background-color: black;
+    border-radius: 0 0 5px 5px;
+}
+
+#docView .search .searchQueryContainer .containerAux.act .searchOperations {
+    display: block;
+}
+
+#docView .search .searchOperations ul {
+    line-height: 39px;
+}
+
+#docView .search .searchOperations ul li {
+    float: left;
+    margin: 0 10px 0 0;
+    color: #1c86b1;
+    font-size: 14px;
+    font-family: OpenSans-Regular;
+    cursor: pointer;
+}
+
+#docView .search .searchOperations .help {
+    float: right;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    background: url(../images/icons/btn_help.png) left top;
+    margin: 5px 10px 5px 0;
+}
+
+#docView .search .searchOperations .switch {
+    line-height: 39px;
+    color: #1c86b1;
+    font-size: 14px;
+    font-family: OpenSans-Regular;
+    cursor: pointer;
+}
+
+#docView .search .searchOperations .searchModeLucene .switch {
+    margin-left: 20px;
+}
+
+#docView .search .searchOperations .help:hover {
+    background-position: 26px 0;
+}
+
+#docView .search .searchOperations .searchModeSubstring {
+    display: none;
+}
+
+#docView .search .searchQueryContainer .customInput {
+    float: left;
+    width: 100%;
+    background: #ccc;
+    border-radius: 5px;
+    padding: 7px 0;
+}
+
+#docView .search .searchQueryContainer .customInput > input {
+    float: left;
+    background: none;
+    border: none;
+    color: #000;
+    margin: 0 0 0 5px;
+    font-size: 14px;
+    width: calc(100% - 65px);
+}
+
+#docView .search .searchQueryContainer .customInput > input::-ms-clear {
+    display: none;
+}
+
+#docView .search .searchQueryContainer .customInput .btn {
+    float: right;
+    width: 44px;
+    margin-right: 10px;
+}
+
+#docView .search .searchQueryContainer .customInput .btn .open {
+    float: right;
+    width: 18px;
+    height: 18px;
+    background: url(../images/icons/btn_content_open.png);
+    background-position: left top;
+    cursor: pointer;
+}
+
+#docView .search .searchQueryContainer .containerAux.act .customInput .btn .open {
+    background: url(../images/icons/btn_content_close.png) left top;
+}
+
+#docView .search .searchQueryContainer .customInput .btn .open:hover, #docView .search .searchQueryContainer .containerAux.act .customInput .btn .open:hover {
+    background-position: 37px 0;
+}
+
+#docView .search .searchQueryContainer .customInput .btn .open:active, #docView .search .searchQueryContainer .containerAux.act .customInput .btn .open:active {
+    background-position: 18px 0;
+}
+
+#docView .search .searchQueryContainer .customInput .btn .open.act {
+    background-position: 18px 0;
+}
+
+#docView .search .searchQueryContainer .customInput .btn .erase {
+    float: left;
+    width: 18px;
+    height: 18px;
+    background: left top url(../images/icons/btn_erase.png);
+    cursor: pointer;
+}
+
+#docView .search .searchQueryContainer .customInput .btn .erase:hover {
+    background-position: 37px 0;
+}
+
+#docView .search .searchQueryContainer .customInput .btn .erase:active {
+    background-position: 18px 0;
+}
+
+#docView .search .searchDomain  {
+    text-align: center;
+    margin: 10px 0;
+}
+
+#docView .search .searchDomain ul {
+    display: inline-block;
+    background: #000;
+    border-radius: 14px;
+}
+
+#docView .search .searchDomain ul li {
+    display: inline-block;
+    border-radius: 14px;
+    padding: 7px 8px;
+    color: #fff;
+    font-size: 14px;
+    font-family: OpenSans-Light;
+    cursor: pointer;
+}
+
+#docView .search .searchDomain ul li:hover {
+    color: #1c86b1;
+}
+
+#docView .search .searchDomain ul li:active, .search .searchDomain li.act {
+    background: #1c86b1;
+    color: #fff;
+}
+
+#docView .search .searchDomain li.act:hover {
+    color:#fff;
+}
+
+#docView .search .content {
+    height: calc(100% - 175px);
+}
+
+#docView .search .scroll {
+    height: calc(100% - 45px);
+    overflow-y: auto;
+}
+
+#docView .search .scroll > ul > li {
+    border-bottom: 2px solid #c3c3c3;
+    position: relative;
+}
+
+#docView .search .scroll > ul > li.active {
+    background-color: #dedede;
+}
+
+#docView .search .scroll > ul > li p.snippet {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+#docView .search .scroll > ul > li p.snippet .recent {
+    float: left;
+    width: calc(100% - 105px);
+    overflow: hidden;
+}
+
+#docView .search .scroll > ul > li p.snippet .date {
+    float: right;
+    width: 100px;
+    font-size: 9pt;
+}
+
+#docView .search .scroll > ul > li p.details {
+    font-size: 10px;
+}
+
+#docView .search .searchResults, .search .recentSearches {
+    height: 100%;
+}
+
+#docView .search .searchResults ul > li > div.icon {
+    display: none;
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+}
+
+#docView .search .searchResults ul > li.current > div.icon {
+    display: block;
+    background: left top url(../images/icons/icon_resultSm.png) no-repeat;
+}
+
+#docView .search .searchResults ul > li.closest > div.icon {
+    display: block;
+    background-color: #3a3;
+    border-radius: 8px;
+}
+
+#docView .search .searchResults ul > li.nextClosest > div.icon {
+    display: block;
+    background-color: #7c7;
+    border-radius: 8px;
+}
+
+#docView .search .externalSearch {
+    text-align: center;
+    bottom: 10px;
+    display: table;
+    position:absolute;
+    width: 95%; 
+}
+
+#docView .search .externalSearch .btn {
+    display: inline-block;
+    background-position: left top;
+    height: 26px;
+    cursor: pointer;
+}
+
+#docView .search .externalSearch .btn:hover {
+    background-position: 0 26px;
+}
+
+#docView .search .externalSearch .btn span {
+    float: left;
+    margin: 6px 0 0 34px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1em;
+}
+
+#docView .search .externalSearch .google {
+    background: url(../images/icons/btn_google.png);
+    width: 101px;
+}
+
+#docView .search .externalSearch .wiki {
+    background: url(../images/icons/btn_wiki.png);
+    width: 116px;
+}
+
+/*** Search mode ***/
+
+#docView .searchPanel {
+    position: fixed;
+    margin: 0 auto;
+    bottom: 80px;
+    width: 200px;
+    left: 0;
+    right: 0;
+    display: none;
+    z-index: 22;
+}
+
+#docView.searchMode .searchPanel {
+    display: block;
+}
+
+#docView .searchPanel .text {
+    float: left;
+    background: #333;
+    color: white;
+    opacity: 0.9;
+    border-radius: 5px;
+    text-align: center;
+    padding: 8px 0;
+    width: 200px
+}
+
+#docView .searchPanel .searchPanelInner {
+    float: left;
+    text-align: center;
+    width: 120px;
+    margin: 0 0 10px 44px;
+}
+
+#docView .searchPanel .searchPanelInner .icon {
+    width: 26px;
+    height: 26px;
+    float: left;
+    background-position: left top;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+#docView .searchPanel .searchPanelInner .icon.disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+#docView .searchPanel .searchPanelInner .icon:hover, #docView .searchPanel .searchPanelInner .icon.disabled {
+    background-position: 26px 0;
+}
+
+#docView .searchPanel .searchPanelInner .prev {
+    background: url(../images/icons/btn_prev.png);
+    margin-right: 10px
+}
+
+#docView .searchPanel .searchPanelInner .next {
+    background: url(../images/icons/btn_next.png);
+}
+
+#docView .searchPanel .searchPanelInner .close {
+    width: 40px;
+    height: 40px;
+    float: left;
+    cursor: pointer;
+    background: left top url(../images/icons/btn_close_srmode.png);
+    margin-right: 10px;
+}
+
+#docView .searchPanel .searchPanelInner .close:hover {
+    background-position: 40px 0;
+}
+
+/*** pageNavigationContainer ***/
+
+#docView .pageNavigationContainer .page_navigation {
+    position: fixed;
+    top: calc(50% - 45px);
+    height: 90px;
+    width: 32px;
+    background-image: url(../images/icons/desk_navi_bg.png);
+    cursor: pointer;
+    z-index: 21;
+}
+
+#docView .pageNavigationContainer .page_navigation.prev {
+    left: 0;
+    background-position: 32px 0;
+}
+
+#docView .pageNavigationContainer .page_navigation.prev:active {
+    left: 0;
+    background-position: 32px 90px;
+}
+
+#docView .pageNavigationContainer .page_navigation.next {
+    right: 0;
+    background-position: 0 0;
+}
+
+#docView .pageNavigationContainer .page_navigation.next:active {
+    right: 0;
+    background-position: 0 90px;
+}
+
+#docView .pageNavigationContainer .page_navigation .arrow {
+    margin-top: 39px;
+    margin-left: 10px;
+    width: 7px;
+    height: 12px;
+    background-image: url(../images/icons/arrows_desk.png);
+}
+
+#docView .pageNavigationContainer .page_navigation.next .arrow {
+    float: right;
+    margin-right: 11px;
+    background-position: 7px 0;
+}
+
+#docView .pageNavigationContainer .page_navigation.next:active .arrow {
+    background-position: 7px 0 !important;
+}
+
+#docView .pageNavigationContainer .page_navigation.next:hover .arrow {
+    float: right;
+    margin-right: 11px;
+    background-position: 7px 12px
+}
+
+#docView .pageNavigationContainer .page_navigation.prev .arrow {
+    float: left;
+    margin-left: 11px;
+    background-position: 0 0;
+}
+
+#docView .pageNavigationContainer .page_navigation.prev:active .arrow {
+    background-position: 0 0 !important;
+}
+
+#docView .pageNavigationContainer .page_navigation.prev:hover .arrow {
+    float: left;
+    margin-left: 11px;
+    background-position: 0 12px
+}
+
+/*** twoPagesContainer ***/
+
+#docView .twoPagesContainer {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    cursor: default;
+    background-image: url(../images/bg.jpg);
+}
+
+#docView.tb .twoPagesContainer {
+    top: 38px;
+    bottom: 38px;
+}
+
+#docView .twoPages {
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+#docView .twoPages > .page {
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+
+#docView .twoPages > .page[data-pageid="dummy"] {
+    opacity: 0;
+}
+
+#docView .twoPages > .page[data-pageid="trialBlank"] {
+    background-color: #fff;
+}
+
+#docView .twoPages > .page[data-pageid="trialBlank"] .svgContainer {
+    opacity: 0;
+}
+
+#docView .twoPages > .page .trialBlank {
+    display: none;
+}
+
+#docView .twoPages > .page[data-pageid="trialBlank"] .trialBlank {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    width: 50%;
+    margin-left: 25%;
+    text-align: center;
+}
+
+#docView .twoPages > .page[data-pageid="trialBlank"] .bookmarks {
+    display: none;
+}
+
+#docView .twoPages .page.loading .loadingBox {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 5;
+    background: url(../libs/showLoading/images/loading.gif) no-repeat center center;
+}
+
+#docView .twoPages .svgContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    background-color: white;
+    background-size: contain;
+}
+
+/*#docView .twoPagesContainer {
+    overflow: auto;
+}*/
+
+#docView .twoPages .word {
+    position: absolute;
+    z-index: 22;
+    background-color: white;
+    opacity: 0;
+}
+
+#docView .twoPages .word.highlight {
+    opacity: 0.2;
+    background-color: blue;
+    z-index: 23;
+    cursor: pointer;
+}
+
+#docView .twoPages .word.searchHighlight {
+    opacity: 0.4;
+    background-color: lawngreen;
+}
+
+#docView .word.annotation {
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+#docView .word.annotation.Yellow {
+    background-color: yellow;
+}
+
+#docView .word.annotation.Green {
+    background-color: #00FF00;
+}
+
+#docView .word.annotation.Red {
+    background-color: orangered;
+}
+
+#docView .word.annotation.Blue {
+    background-color: cyan;
+}
+
+#docView .word.annotation.Gray {
+    background-color: gray;
+}
+
+#docView .word.annotation.Underline {
+    background: transparent url(../images/underline.png) repeat-x left bottom;
+    opacity: 1;
+}
+
+#docView .zoom10 .word.annotation.Underline {
+    background-size: 20px auto;
+}
+
+#docView .zoom20 .word.annotation.Underline {
+    background-size: 15px auto;
+}
+
+#docView .zoom30 .word.annotation.Underline {
+    background-size: 12px auto;
+}
+
+#docView .zoom40 .word.annotation.Underline {
+    background-size: 10px auto;
+}
+
+#docView .zoom50 .word.annotation.Underline {
+    background-size: 7px auto;
+}
+
+#docView .word.annotation.Crossed {
+    background: transparent url(../images/red1x2.png) repeat-x left center;
+    opacity: 1;
+}
+
+#docView .word.annotation.Crossed {
+    background: transparent url(../images/red1x2.png) repeat-x left center;
+    opacity: 1;
+}
+
+#docView .zoom10 .word.annotation.Crossed {
+    background-size: 12px auto;
+}
+
+#docView .zoom20 .word.annotation.Crossed {
+    background-size: 10px auto;
+}
+
+#docView .zoom30 .word.annotation.Crossed {
+    background-size: 8px auto;
+}
+
+#docView .zoom40 .word.annotation.Crossed {
+    background-size: 6px auto;
+}
+
+/*#docView .word.annotation.Underline {
+    background: 0 bottom repeat-x url(../images/zigzag.svg);
+    opacity: 1;
+    overflow: visible;
+}
+
+#docView .word.annotation.Crossed {
+    background: 0 center repeat-x url(../images/line.svg);
+    opacity: 1;
+    overflow: visible;
+}*/
+
+#docView .twoPages {
+    position: absolute;
+    font-size: 0;
+}
+
+#docView .twoPages:not([data-mode="words"]) {
+    cursor: url(images/openhand.cur), auto;     /* for IE broken relative path is required - relates to index.html, not to this css file */
+    cursor: grab;
+    cursor: -webkit-grab;
+}
+
+#docView .twoPages.scrollActive {
+    cursor: url(images/closedhand.cur), auto;   /* for IE broken relative path is required - relates to index.html, not to this css file */
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+}
+
+#docView [data-mode="words"] .word:not(.annotation):not(.highlight) {
+    cursor: text;
+}
+
+/*** Links ***/
+
+#docView .twoPages .docLink {
+    position: absolute;
+    background-color: #007FFF;
+    opacity: 0.1;
+    border: 1px solid black;
+    z-index: 23;    /* normally above the .word */
+    cursor: pointer;
+}
+
+#docView .twoPages[data-mode="words"] .docLink {
+    z-index: 21;   /* below the .word */
+    cursor: default;
+}
+
+#docView .twoPages .docLink.external {
+    background-color: #647FFF;
+    opacity: 0.3;
+}

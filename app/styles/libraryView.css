@@ -1,0 +1,718 @@
+body.library {
+    background: url(../images/library/bg.png);
+    width: 100%;
+    height: 100%;
+}
+
+body.library #libraryView {
+    display: block;
+}
+
+body.library #footer {
+    display: block;
+    z-index: 22;
+}
+
+#libraryView {
+    display: none;
+    /*overflow: hidden;*/ /* to fit full height cause of floated children */
+}
+
+#libraryView .btn.version .fe, #libraryView .btn.version .block {
+    display: none;
+}
+
+#libraryView .btn.version.active .fe, #libraryView .btn.version.active .block {
+    display: block;
+}
+
+#libraryView li div.block {
+    font-size: 14px;
+}
+
+#libraryView li div.block h2 {
+    float: left;
+    width: 90%;
+    margin: 20px 0 0 5%;
+    font-family: OpenSans-Bold;
+}
+
+#libraryView li div.block h2.up {
+    text-transform: uppercase;
+}
+
+#libraryView li div.block p {
+    float: left;
+    width: 90%;
+    margin: 5px 0 0 5%;
+    font-size: 14px;
+    line-height: 1.2em;
+}
+
+#libraryView li div.block .line {
+    float: left;
+    width: 90%;
+    margin: 7px 0 10px 5%;
+    border-top: 2px solid #858585;
+}
+
+#libraryView .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    display: block;
+}
+
+#libraryView .header .top {
+    float: left;
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    height: 61px;
+    background: left -3px url(../images/library/header_bg_black.png) repeat-x;
+}
+
+#libraryView .header .top.big {
+    height: 101px;
+    background: left -3px url(../images/library/header_bg_big.png) repeat-x;
+}
+
+#libraryView .header .top .top_navigation {
+    float: right;
+    position: absolute;
+    bottom: 24px;
+    right: 31px;
+}
+
+#libraryView .header .top .top_navigation li {
+    float: left;
+    margin: 0 0 0 15px
+}
+
+#libraryView .header .top .top_navigation li a {
+    float: left;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 14px;
+    font-family: OpenSans-Light
+}
+
+#libraryView .header .top .top_navigation li a:hover {
+    color: #1c86b1;
+}
+
+#libraryView .header .status {
+    position: absolute;
+    bottom: 24px;
+    left: 150px;
+    color: #fff;
+}
+
+#libraryView .header .status img {
+    position: absolute;
+    right: -27px;
+}
+
+#libraryView .header .loginContainer {
+    float: right;
+    position: absolute;
+    right: 31px;
+    top: 20px;
+    display: none;
+    width: 180px
+}
+
+#libraryView .header .top.big .loginContainer {
+    display: block;
+}
+
+#libraryView .header .loginContainer .btn {
+    float: right;
+    height: 26px;
+    cursor: pointer;
+}
+
+#libraryView .header .loginContainer .btn.login:hover {
+    background-position: 0 26px;
+}
+
+#libraryView .header .loginContainer .btn .fe {
+    display: none;
+}
+
+#libraryView .header .loginContainer .btn.active .fe {
+    display: block;
+}
+
+#libraryView .header .loginContainer .btn span, #libraryView .header .loginContainer .btn a {
+    float: left;
+    font-size: 14px;
+    color: #fff;
+    margin: 5px 0 0 32px;
+    line-height: 1em
+}
+
+#libraryView .header .filter {
+    float: left;
+    width: 100%;
+    height: 81px;
+    background: url(../images/library/filter_bg.png);
+    position: relative;
+    z-index: 4;
+    top: -1px;
+}
+
+#libraryView .header .filterControl {
+    width: 200px;
+    height: 17px;
+    background: url(../images/library/header_close.png);
+    z-index: 2;
+    margin: 0 auto;
+    cursor: pointer;
+    display: block;
+    clear: left;
+    position: relative;
+    top: -2px;
+    opacity: 0.8;
+}
+
+#libraryView .header .filterControl span {
+    width: 100%;
+    height: 17px;
+    background: center center url(../images/icons/arrow_bottom.png) no-repeat;
+    float: left;
+}
+
+#libraryView .header .filterControl.open span {
+    background: center center url(../images/icons/arrow_top.png) no-repeat;
+}
+
+#libraryView .header .filter .workline {
+    float: left;
+    width: 100%;
+    margin-top: 27px;
+}
+
+#libraryView .header .inp_group {
+    float: left;
+    font-size: 14px;
+    margin: 0 0 0 4%;
+}
+
+#libraryView .header .inp_group > label {
+    float: left;
+    color: #fff;
+    margin: 7px 10px 0 0;
+    font-size: 14px;
+    line-height: 1em;
+}
+
+#libraryView .header .inp_group.search {
+    float: right;
+    margin: 0 2% 0 0;
+}
+
+#libraryView .header .inp_group.search .stand_input {
+    width: 240px;
+}
+
+#libraryView .header .inp_group.search .stand_input input[type="text"] {
+    width: 198px;
+}
+
+#libraryView .custom_chbox .ch_body {
+    float: left;
+    width: 52px;
+    height: 26px;
+    background: #000;
+    border-radius: 13px;
+    position: absolute;
+    z-index: 98;
+}
+
+#libraryView .custom_chbox {
+    float: left;
+    width: 52px;
+    height: 26px;
+    position: relative;
+}
+
+#libraryView .custom_chbox input {
+    float: left;
+    position: absolute;
+    z-index: 0;
+    opacity: 0;
+}
+
+#libraryView .custom_chbox .ch_body > div {
+    float: left;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    z-index: 100
+}
+
+#libraryView .custom_chbox .ch_body .check {
+    right: 0;
+    cursor: pointer;
+}
+
+#libraryView .view .custom_chbox .check {
+    right: 0;
+    cursor: pointer;
+    background: center center url(../images/icons/check_list.png) no-repeat;
+}
+
+#libraryView .custom_chbox .ch_body.active .check {
+    cursor: inherit;
+}
+
+#libraryView .custom_chbox .ch_body .no_check {
+    left: 0;
+    cursor: inherit;
+}
+
+#libraryView .view .custom_chbox .no_check {
+    left: 0;
+    cursor: inherit;
+    background: center center url(../images/icons/check_cover.png) no-repeat;
+}
+
+#libraryView .custom_chbox .ch_body.active .no_check {
+    cursor: pointer;
+}
+
+#libraryView .custom_chbox .ch_body .check_disk {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    z-index: 99;
+    background: center center url(../images/icons/progress_circle.png) no-repeat;
+    left: 0;
+}
+
+#libraryView .custom_chbox .ch_body.active .check_disk {
+    left: auto;
+    right: 0;
+}
+
+#libraryView .libraryContent {
+    float: left;
+    width: 100%;
+}
+
+#libraryView .libraryContent.filterOpened {
+    margin-top: 70px;
+    transition: margin-top 0.5s;
+}
+
+#libraryView .mainlist {
+    float: left;
+    margin: 10px 0 30px 30px;
+    width: 95%;
+}
+
+#libraryView .libraryContent > *:first-child {
+    margin-top: 143px;
+}
+
+#libraryView .libraryContent > ul {
+    margin-bottom: 5px;
+}
+
+#libraryView .mainlist > li {
+    float: left;
+    margin: 0 30px 30px 0;
+    position: relative;
+}
+
+#libraryView .list .mainlist > li {
+    margin: 0 0;
+    position: relative;
+    width: 100%;
+    padding-top: 5px;
+    border-bottom: 2px solid #6B6B6B;
+}
+
+#libraryView .list .mainlist > li.last {
+    border-bottom: none;
+}
+
+/*#libraryView .list .mainlist > li:last-child{border-bottom: none;}*/
+#libraryView .mainlist > li > label {
+    color: #fff;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: -20px;
+    text-align: center;
+    font-size: 11px;
+    font-family: OpenSans-Light;
+}
+
+#libraryView .mainlist > li .coverContainer {
+    float: left;
+    cursor: pointer;
+    position: relative;
+    height: 236px;
+    width: 177px;
+    text-align: center;
+    background: transparent no-repeat center;
+    background-size: contain;
+}
+
+#libraryView .mainlist > li.new .coverContainer {
+    background: url("../images/new.png") no-repeat right top;
+}
+
+#libraryView .mainlist > li img.cover {
+    position: relative;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+#libraryView li.btn.version img.versionCover {
+    width: 60px;
+}
+
+#libraryView li.btn.version td.versionCover {
+    width: 60px;
+    min-height: 80px;
+    position: relative;
+}
+
+#libraryView li.btn.version td.meta {
+    padding-left: 5px;
+}
+
+#libraryView .list .mainlist > li > img.cover {
+    float: left;
+    margin: 0 0 10px 0;
+    position: relative;
+    width: 70px;
+    height: 90px;
+}
+
+#libraryView .mainlist > li > img.new {
+    position: absolute;
+    right: 2px;
+    top: 5px;
+    z-index: 5;
+}
+
+#libraryView .list .mainlist > li > img.new {
+    display: none;
+}
+
+#libraryView .mainlist .action {
+    clear: left;
+    width: auto;
+    margin: 0 auto;
+    padding-top: 5px;
+    text-align: center;
+    display: table;
+}
+
+#libraryView .list .mainlist > li > ul.action {
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+}
+
+#libraryView .scroll .action li.putondesk.invert > div.ico {
+    background-position: -81px 0;
+}
+
+#libraryView .mainlist .scroll .action {
+    margin: 0;
+}
+
+#libraryView .bordline {
+    float: left;
+    width: 100%;
+    background: left center url(../images/arhive_line_bg.png) repeat-x;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#libraryView .bordline .center {
+    background: url("../images/icons/icon_categorie.png") no-repeat scroll 17px 7px #535353;
+    display: inline-block;
+    height: 28px;
+    border-radius: 13px;
+    margin: 0 auto;
+    padding: 0 17px 0 36px;
+}
+
+#libraryView .bordline .center span {
+    color: #fff;
+    font-size: 14px;
+    line-height: 28px;
+}
+
+#libraryView .mainlist .dopinfo {
+    float: left;
+    display: none;
+    margin: 0 0 0 10px;
+}
+
+#libraryView .list .mainlist .dopinfo {
+    display: block;
+}
+
+#libraryView .dopinfo p {
+    font-size: 14px;
+    margin: 5px 0 0 0;
+}
+
+#libraryView .dopinfo h3 {
+    font-size: 19px;
+    font-family: OpenSans-Bold;
+    text-transform: uppercase;
+    margin: 5px 0 0 0
+}
+
+#libraryView .dopinfo > * {
+    float: left;
+    width: auto;
+    clear: left;
+    color: #fff;
+}
+
+#libraryView .archive {
+    float: left;
+    height: 26px;
+    width: 72px;
+    cursor: pointer;
+    background: top left url(../images/icons/archive_bg.png);
+}
+
+#libraryView .archive span {
+    float: left;
+    font-size: 14px;
+    color: #fff;
+    margin-left: 14px;
+    line-height: 26px;
+}
+
+#libraryView .dopinfo .author {
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+#libraryView .dopinfo .author p {
+    float: left;
+}
+
+#libraryView .dopinfo .author img {
+    float: left;
+    margin: 0 0 0 10px;
+    position: relative;
+    bottom: -3px;
+}
+
+#libraryView .dopinfo .author span {
+    float: left;
+    margin: 0 0 0 10px;
+    padding: 3px 10px;
+    border-radius: 13px;
+    background: #000;
+    font-size: 11px;
+    position: relative;
+    bottom: -3px;
+    text-transform: uppercase;
+}
+
+#libraryView .dopinfo .author span.blue {
+    background: linear-gradient(to right, #04b5ff 0%, #0e7fcf 100%);
+}
+
+#libraryView .btn div.fe {
+    background: url("../images/icons/popover_ver_btn.png") no-repeat scroll center top rgba(0, 0, 0, 0);
+    height: 45px;
+    left: -18px;
+    position: absolute;
+    top: -4px;
+    width: 62px;
+    z-index: 6;
+}
+
+#libraryView .btn div.fe.up {
+    background-image: url("../images/icons/popover_ver_btn_up.png");
+    top: -16px;
+}
+
+#libraryView .btn div.fe > div {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 3px 3px 0 #A4A4A4;
+    opacity: 0.95;
+    position: absolute;
+    top: 44px;
+    z-index: 6;
+    left: -50px;
+    width: 240px;
+    padding-bottom: 20px;
+}
+
+#libraryView .btn div.block {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 10px;
+    box-shadow: none;
+    opacity: 0.95;
+    position: absolute;
+    top: 41px;
+    z-index: 8;
+    left: -50px;
+    width: 242px;
+    padding-bottom: 20px;
+}
+
+#libraryView .libraryContent.list.list .btn div.block {
+    left: -160px;
+}
+
+#libraryView .btn div.fe h2 {
+    text-transform: uppercase;
+}
+
+#libraryView .btn div.fe .scroll, #libraryView .btn div.block .scroll {
+    height: 211px;
+    margin: 10px 0 10px 5%;
+    width: 90%;
+    overflow-y: scroll;
+    float: left;
+}
+
+#libraryView .btn div.fe .scroll table, #libraryView .btn div.block .scroll table {
+    width: 100%;
+}
+
+#libraryView .btn div.fe .scroll table td, #libraryView .btn div.block .scroll table td {
+    vertical-align: top;
+    padding-bottom: 10px;
+}
+
+#libraryView .btn div.block .scroll table tr {
+    height: 80px;
+}
+
+#libraryView .btn div.fe .scroll table td > img {
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+#libraryView .btn div.fe > div .close, #libraryView .btn div.block .close {
+    top: -9px;
+    right: -9px;
+}
+
+#libraryView .btn div.block .close {
+    top: -9px;
+    right: -9px;
+}
+
+#libraryView .btn div.fe .scroll h3, #libraryView .btn div.block .scroll h3 {
+    float: left;
+    width: 96%;
+    font-family: OpenSans-Regular;
+    font-size: 14px;
+    text-align: left;
+    margin: 0 0 0 3%;
+    font-weight: bold;
+}
+
+#libraryView .btn div.fe .scroll p, #libraryView .btn div.block .scroll p {
+    float: left;
+    width: 96%;
+    font-family: OpenSans-Light;
+    font-size: 14px;
+    text-align: left;
+    margin: 0 0 0 3%
+}
+
+#libraryView .libraryLink {
+    color: #33a5d7;
+    font-weight: bold;
+    cursor: default;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: OpenSans-Light;
+}
+
+#libraryView .badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+#libraryView tr.prob .badge, #libraryView li.prob .coverContainer .badge {
+    background: url(../images/leseprobe.png) no-repeat right top;
+    display: block;
+    cursor: pointer;
+}
+
+#libraryView tr.prob .badge {
+    background-size: contain;
+}
+
+#libraryView li.notOwner:not(.prob) img.cover, #libraryView tr.notOwner:not(.prob) img.versionCover {
+    opacity: 0.5;
+}
+
+#libraryView tr.notOwner img.versionCover {
+    cursor: default;
+}
+
+/*** Login / logout ***/
+
+#libraryView .btn.login {
+    display: block;
+    background: url(../images/icons/btn_login.png);
+    width: 88px;
+}
+
+#libraryView .btn.login:hover {
+    background-position: left 26px;
+}
+
+#libraryView .btn.account {
+    display: none;
+    background: url(../images/icons/btn_account.png);
+    width: 94px;
+}
+
+#libraryView .btn.account:hover {
+    background-position: left 26px;
+}
+
+[data-reader-logged-in="true"] #libraryView .btn.login, [data-pak-activated="true"] #libraryView .btn.login {
+    display: none;
+}
+
+[data-reader-logged-in="true"] #libraryView .btn.account, [data-pak-activated="true"] #libraryView .btn.account {
+    display: block;
+}
+
+/*** Temp debug sorting info ***/
+
+#libraryView .coverContainer .debugSortInfo {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 50%;
+    width: 100%;
+    opacity: 0.5;
+    background-color: black;
+    color: white;
+    font-size: 13px;
+}
+
+[data-demosort] #libraryView .coverContainer .debugSortInfo {
+    display: block;
+}

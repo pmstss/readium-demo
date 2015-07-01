@@ -1,0 +1,6 @@
+[submodule "readium-js"]
+	path = readium-js
+	url = https://github.com/pmstss/readium-js
+[submodule "books"]
+	path = books
+	url = https://github.com/pmstss/epub-books
