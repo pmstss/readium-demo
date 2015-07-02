@@ -90,7 +90,7 @@ require(['jquery', 'backbone', 'Readium'], function ($, Backbone, Readium) {
         },
 
         defaultRoute: function () {
-            this.navigate('book/William_Shakespeare_Venus_and_Adonis', {
+            this.navigate('book/epub30-spec', {
                 trigger: true,
                 replace: true
             });
