@@ -1,6 +1,6 @@
 /*global require, LookUp, ReadiumSDK*/
 
-require(['jquery', 'backbone', 'readiumSDK'], function ($, Backbone, ReadiumSDK) {
+require(['jquery', 'backbone'], function ($, Backbone) {
     'use strict';
 
     LookUp.views.DocView = Backbone.View.extend({
@@ -35,7 +35,6 @@ require(['jquery', 'backbone', 'readiumSDK'], function ($, Backbone, ReadiumSDK)
         },
 
         onZoomChange: function (appState, zoom) {
-            console.log('### zoom: %o', zoom);
             appState.get('readium').reader.updateSettings({
                 fontSize : zoom
             });

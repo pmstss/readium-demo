@@ -1,4 +1,5 @@
 /*global require*/
+/*jshint eqeqeq: false*/
 
 require(['jquery', 'handlebars'], function (jQuery, Handlebars) {
     'use strict';

@@ -1,10 +1,8 @@
-/*global require, LookUp, ReadiumSDK*/
-/*jshint globalstrict: true*/
-
-'use strict';
+/*global require, LookUp*/
 
 require(['Readium'],
     function (Readium) {
+        'use strict';
 
         LookUp.ReadiumUtils.createInstance = function (options) {
             var readerOptions = {
