@@ -42,7 +42,7 @@ require(['jquery', 'backbone', 'handlebars', 'readiumSDK'], function ($, Backbon
                     chapterPagesTotal: pageInfo.spineItemPageCount,
                     chapterPageIdx: pageInfo.spineItemPageIndex
                 };
-                console.log('position info: %o', this.positionInfo);
+                //console.log('position info: %o', this.positionInfo);
                 this.onPageChange();
             }.bind(this));
         },
@@ -55,7 +55,6 @@ require(['jquery', 'backbone', 'handlebars', 'readiumSDK'], function ($, Backbon
         setPageNum: function (pageNum) {
             //return LookUp.router.appState.get('readium').reader.openPageIndex(pageNum - 1);
             var reader = LookUp.router.appState.get('readium').reader;
-            console.log('### spine item: %o, pageNum: %o', reader.getLoadedSpineItems(), pageNum);
             return reader.openSpineItemPage(reader.spine().item(pageNum - 1).idref);
         },
 

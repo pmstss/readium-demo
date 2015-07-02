@@ -1,11 +1,10 @@
 /*global require, LookUp*/
 
-require(['jquery', 'backbone'], function ($, Backbone) {
+require(['jquery', 'backbone', 'Readium'], function ($, Backbone, Readium) {
     'use strict';
 
     LookUp.Router = Backbone.Router.extend({
         routes: {
-            'custom/:bookName': 'routeCustomBook',
             'book/:bookName': 'routeBook',
             '*path': 'defaultRoute'
         },
@@ -14,6 +13,7 @@ require(['jquery', 'backbone'], function ($, Backbone) {
             this.appState = new LookUp.models.AppState();
 
             var $docView = $('#docView');
+            this.$epubContainer = $docView.find('#epubContainer');
 
             new LookUp.views.DocView({
                 appState: this.appState,
@@ -55,33 +55,36 @@ require(['jquery', 'backbone'], function ($, Backbone) {
             }.bind(this));
         },
 
-        routeCustomBook: function () {
-            var readium = this.appState.get('readium');
-            if (readium) {
-                readium.closePackageDocument();
-            }
+        createReadiumInstance: function (options) {
+            var readium = new Readium({}, {
+                el: options.el,
+                //TODO use internal link. but relative links are treated here as links inside epub
+                mathJaxUrl: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+            });
 
-            var customBookData = this.appState.get('customBookData');
-            if (customBookData) {
-                this.appState.set('readium', LookUp.ReadiumUtils.createInstance({
-                    el: '#epubContainer',
-                    url: customBookData
-                }));
-            } else {
-                this.defaultRoute();
-            }
+            readium.reader.updateSettings({
+                syntheticSpread: 'auto',
+                scroll: 'auto'
+            });
+
+            readium.openPackageDocument(options.url, function (packageDocument) {
+                this.appState.set('packageDocument', packageDocument);
+            }.bind(this));
+
+            return readium;
         },
 
         routeBook: function (bookName) {
             var readium = this.appState.get('readium');
             if (readium) {
                 readium.closePackageDocument();
+                this.$epubContainer.empty();
             }
 
             bookName = /\.epub$/.test(bookName) ? bookName : bookName + '/';
-            console.log('### before createInstance');
-            this.appState.set('readium', LookUp.ReadiumUtils.createInstance({
-                el: '#epubContainer',
+
+            this.appState.set('readium', this.createReadiumInstance({
+                el: this.$epubContainer.get(0),
                 url: '../books/' + bookName
             }));
         },

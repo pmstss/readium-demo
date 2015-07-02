@@ -5,7 +5,6 @@ require(['jquery', 'backbone', 'handlebars'], function ($, Backbone, Handlebars)
 
     LookUp.views.DocHeaderView = Backbone.View.extend({
         events: {
-            'change .loadEpub': 'onFileSelect',
             'click .books .circle': 'onBooksIconClick'
         },
 
@@ -14,35 +13,32 @@ require(['jquery', 'backbone', 'handlebars'], function ($, Backbone, Handlebars)
         initialize: function (options) {
             this.appState = options.appState;
 
+            this.$books = this.$el.find('.settings.books');
+
             this.$el.find('.books .fe > div').html(this.templateBooksList());
 
-            this.listenTo(this.appState, 'change:book', this.onBookChange);
+            this.listenTo(this.appState, 'change:packageDocument', this.onPackageDocumentChange);
         },
 
-        onBookChange: function (appState, book) {
-            book.loaded.metadata.then(function (meta) {
-                console.log('meta: %o', meta);
-                this.$el.find('.headerContainer h1').html(meta.title + '<span>' + meta.creator + '</span>');
-            }.bind(this));
+        onPackageDocumentChange: function (appState, packageDocument) {
+            var meta = packageDocument.getMetadata();
+            console.log('meta: %o', meta);
+            this.$el.find('.headerContainer h1').html(meta.title + '<span>' + (meta.creator || meta.author || '') + '</span>');
+            this.hidePopover();
         },
 
         onBooksIconClick: function (e) {
             e.preventDefault();
-            $(e.currentTarget).closest('.books').toggleClass('active');
+            this.togglePopover();
         },
 
-        onFileSelect: function (e) {
-            var file = e.target.files[0];
-            if (window.FileReader) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    this.appState.set('customBookData', {
-                        name: file.name,
-                        data: e.target.result
-                    });
-                }.bind(this);
-                reader.readAsArrayBuffer(file);
-            }
+        togglePopover: function () {
+            this.$books.toggleClass('active');
+        },
+
+        hidePopover: function () {
+            this.$books.removeClass('active');
         }
+
     });
 });

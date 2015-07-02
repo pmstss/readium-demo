@@ -20,15 +20,44 @@ require(['jquery', 'backbone', 'handlebars'], function ($, Backbone, Handlebars)
 
             this.$tocContent = this.$el.find('.content');
 
-            this.listenTo(this.appState, 'change:book', function (appState, book) {
-                book.loaded.navigation.then(function (items) {
-                    console.log('toc: %o', items);
-                    this.renderTOC(items);
+            this.listenTo(this.appState, 'change:packageDocument', function (appState, packageDocument) {
+                packageDocument.generateTocListDOM(function (dom) {
+                    console.log('dom from generateTocListDOM(): %o', dom);
+                    var parsedItems = this.parseTocObjFromXml($(dom).find('nav[epub\\:type="toc"]'));
+                    console.log('parsedItems: %o', parsedItems.inners);
+                    this.renderTOC(parsedItems.inners);
                 }.bind(this));
             });
 
             $(document).on('CustomResize', this.adjustPopoverSize.bind(this));
             this.adjustPopoverSize();
+        },
+
+        parseTocObjFromXml: function($el) {
+            var $ol = $el.children('ol');
+            var $a = $el.children('a');
+            if ($ol.length) {
+                var res = [];
+                var self = this;
+                $ol.children('li').each(function () {
+                   res.push(self.parseTocObjFromXml($(this)));
+                });
+                return {
+                    label: $a.text(),
+                    href: $a.attr('href'),
+                    inners: res
+                };
+            } else {
+                if ($el.get(0).tagName.toLowerCase() !== 'li') {
+                    console.log('### not ol and not li: %o', $el);
+                    return {};
+                }
+
+                return {
+                    label: $a.text(),
+                    href: $a.attr('href')
+                };
+            }
         },
 
         adjustPopoverSize: function () {
@@ -76,7 +105,11 @@ require(['jquery', 'backbone', 'handlebars'], function ($, Backbone, Handlebars)
         },
 
         onItemClick: function (e) {
-            this.appState.get('book').gotoHref($(e.target).attr('data-dst'));
+            console.log('data-dst: %o', $(e.target).attr('data-dst'));
+            //TODO clarify about differences between href and conrentUrl here
+            if (!this.appState.get('readium').reader.openContentUrl($(e.target).attr('data-dst'))) {
+                this.appState.get('readium').reader.openContentUrl('xhtml/' + $(e.target).attr('data-dst'));
+            }
         }
     });
 });

@@ -6,11 +6,11 @@ require(['jquery', 'backbone'], function ($, Backbone) {
     LookUp.models.AppState = Backbone.Model.extend({
         defaults: {
             readium: null,
+            packageDocument: null,
             toolbarsVisible: true,
             fullscreen: false,
             wordsMode: false,
-            zoom: 100,
-            customBookData: null
+            zoom: 100
         },
 
         initialize: function () {

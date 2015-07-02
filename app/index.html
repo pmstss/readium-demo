@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>lookup epub.js demo</title>
+    <title>lookup readiumjs demo</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="favicon.ico">
@@ -101,11 +101,11 @@
         <!--div class="row">
             <div class="caption" id="quiz"><a href="#book/quiz-bindings" title="Open book">Quiz</a></div>
             <div> A <a target="_blank" href="http://idpf.org/epub/30/spec/epub30-publications.html#sec-bindings-elem">bindings</a>-based "quiz". This particular sample represents a multiple-choice quiz with a self-checking feature. Allows for three types of quizzes: all questions at once, one question at a time, and one question at a time with immediate feedback ("flashcard" mode). Implementations that do not support <a target="_blank" href="http://idpf.org/epub/30/spec/epub30-publications.html#sec-bindings-elem">bindings</a> will fallback to display all questions and possible answers as a static list. </div>
-        </div>
+        </div-->
         <div class="row">
             <div class="caption" id="sous-le-vent"><a href="#book/sous-le-vent" title="Open book">Sous le vent</a></div>
             <div> An extract of a <a target="_blank" href="http://www.idpf.org/epub/fxl/">fixed layout document</a>, using SVG embedded in XHTML spine items.</div>
-        </div-->
+        </div>
         <div class="row">
             <div class="caption" id="mymedia-lite"><a href="#book/mymedia_lite" title="Open book">Vertical Writing</a></div>
             <div>Vertical writing, page-progression-direction rtl, and alternate stylesheets for vertical/horizontal writing. </div>
@@ -159,8 +159,6 @@
             <tbody>
             <tr>
                 <td class="ltb">
-                    <input type="file" class="loadEpub"/>
-                    <!--a href="#" class="btn gotoLibrary"><span>Bibliothek</span></a-->
                     <ul>
                         <li class="settings books">
                             <div class="circle"><a href="#" title="Einstellungen">&nbsp;</a></div>
@@ -230,7 +228,6 @@
 <script src="scripts/handlebarsHelpers.js"></script>
 <script src="scripts/declare.js"></script>
 <script src="scripts/utils.js"></script>
-<script src="scripts/readiumUtils.js"></script>
 <script src="scripts/appState.js"></script>
 <script src="scripts/docView.js"></script>
 <script src="scripts/docHeaderView.js"></script>
@@ -245,7 +242,6 @@
     require(['jquery'], function ($) {
         $(function () {
             require(['Readium', 'jquery', 'backbone', 'handlebars'], function () {
-                console.log('### before initializing router');
                 LookUp.router = new LookUp.Router();
                 Backbone.history.start();
             });
