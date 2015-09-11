@@ -102,7 +102,7 @@ module.exports = function (grunt) {
                     almond: true,
                     // replace require script calls, with the almond modules in the following files
                     replaceRequireScript: [{
-                        files: ['<%= config.dist %>/index.html'],
+                        files: ['<%= config.dist %>/dev.html'],
                         module: 'main',
                         modulePath: 'scripts/app'
                     }],
@@ -159,7 +159,7 @@ module.exports = function (grunt) {
             options: {
                 dest: '<%= config.dist %>'
             },
-            html: '<%= config.app %>/index.html'
+            html: '<%= config.app %>/dev.html'
         },
 
         // Performs rewrites based on rev and the useminPrepare configuration
@@ -185,10 +185,20 @@ module.exports = function (grunt) {
                     dest: '<%= config.dist %>',
                     src: [
                         '*.{ico,png,gif}',
-                        '{,*/}*.html',
-                        'fonts/{,*/}*.*'
+                        'fonts/{,*/}*.*',
+                        'dev.html'
                     ]
+                    /*rename: function (dest, src) {
+                        return src === 'dev.html' ? dest + 'index.html' : dest + src;
+                    }*/
                 }]
+            }
+        },
+
+        rename: {
+            all: {
+                src: '<%= config.dist %>/dev.html',
+                dest: '<%= config.dist %>/index.html'
             }
         }
     });
@@ -211,6 +221,7 @@ module.exports = function (grunt) {
         'requirejs',
         'htmlmin',
         //'rev',
-        'clean:temp'
+        'clean:temp',
+        'rename'
     ]);
 };
