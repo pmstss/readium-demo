@@ -1,0 +1,41 @@
+
+
+***** http://idpf.org/forum/topic-1487
+Submitted by rkwright on March 27, 2014 - 7:39am
+I am able to load ePub and read it through web server using Readium js library. But my query is to highlight the text and bookmark . Please let me know how to do it as soon as possible.
+
+We are working to add this feature, but it is not yet part of the shipping product. Be aware that there is no standard (at present) for bookmarks and annotations, but we are following as closely as possible the work by the W3C on this front.
+
+https://github.com/idpf/epub-revision
+https://github.com/readium/readium-cfi-js
+
+
+getCurrentSelectionCFI
+- getCurrentSelectionRange :: Range[startContainer,endContainer,startOffset,endOffset]
+- getSelectionInfo(Range) :: CFI
+-- generateRangeCFI
+--- EPUBcfi.Generator/epubCFI.generateCharOffsetRangeComponent(startNode, startOffset, endNode, endOffset,
+                ["cfi-marker", "mo-cfi-highlight"], [], ["MathJax_Message"]);
+---- createCFITextNodeStep
+
+
+var epubCFI = new EPUBJS.EpubCFI();
+var snapshot = document.evaluate( '//text()[normalize-space()]', document.querySelector('#area > section'), null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+for ( var i=0 ; i <snapshot.snapshotLength; ++i) { var item = snapshot.snapshotItem(i); console.log('item: %o, cfi: %o', item, epubCFI.generateCfiFromTextNode(item));}
+
+
+
+
+
+window.aaa = this.reader;
+window.aaa.addHighlight('xchapter_102', "/4/2/14,/1:0,/1:50", 'id001', 'highlight', null);
+aaa.getElementByCfi(aaa.getLoadedSpineItems()[0], '/4/2/14')
+
+EpubReader.js:60 currentDocument
+
+
+ReadiumJS:20333 - ReflowableView
+var reflowableView = this
+
+ReadiumJS:17423 - CfiNavigationLogic
+navigationLogic = this
