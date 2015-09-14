@@ -91,19 +91,26 @@ module.exports = function (grunt) {
             all: {
                 options: {
                     baseUrl: 'scripts',
-                    mainConfigFile: '<%= config.app %>/scripts/main.js',
+                    mainConfigFile: '<%= config.app %>/scripts/requirejs_config.js',
                     keepBuildDir: true,
 
-                    name: 'main',
-                    include: ['lu-router'],
+                    name: 'requirejs_config',
+                    //include: ['lu-router'],
                     out: '<%= config.dist %>/scripts/app.js',
+
+                    /*'zip': '../readium-js/build-output/_multiple-bundles/readium-external-libs',*/
+                    'console_shim': '../readium-js/build-output/_multiple-bundles/readium-external-libs',
+
+                    bundles: {
+                        'readium-external-libs': []
+                    },
 
                     // insert almond in all your modules
                     almond: true,
                     // replace require script calls, with the almond modules in the following files
                     replaceRequireScript: [{
                         files: ['<%= config.dist %>/dev.html'],
-                        module: 'main',
+                        module: 'requirejs_config',
                         modulePath: 'scripts/app'
                     }],
                     optimize: 'uglify2',
